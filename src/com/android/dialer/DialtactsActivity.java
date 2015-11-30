@@ -16,10 +16,16 @@
 
 package com.android.dialer;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,10 +35,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.preference.PreferenceManager;
-import android.provider.CallLog.Calls;
 import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.Intents;
 import android.speech.RecognizerIntent;
@@ -94,16 +97,9 @@ import com.android.dialer.widget.SearchEditTextLayout;
 import com.android.dialer.widget.SearchEditTextLayout.OnBackButtonClickedListener;
 import com.android.dialerbind.DatabaseHelperManager;
 import com.android.phone.common.animation.AnimUtils;
-import com.android.phone.common.util.SettingsUtil;
-import com.android.ims.ImsManager;
-import com.android.phone.common.animation.AnimationListenerAdapter;
 import com.android.phone.common.animation.AnimUtils.AnimationCallback;
-
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
+import com.android.phone.common.animation.AnimationListenerAdapter;
+import com.android.phone.common.util.SettingsUtil;
 
 /**
  * The dialer tab's title is 'phone', a more common name (see strings.xml).

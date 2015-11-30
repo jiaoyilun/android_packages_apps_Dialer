@@ -185,7 +185,7 @@
                 <category android:name="android.intent.category.TEST"/>
             </intent-filter>
         </activity>
-
+        
         <!-- Backwards compatibility: "Phone" from Gingerbread and earlier -->
         <activity-alias android:name="DialtactsActivity"
             android:targetActivity=".DialtactsActivity"
