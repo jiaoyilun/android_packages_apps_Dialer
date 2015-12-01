@@ -101,4 +101,12 @@
   <string name="smart_mute_summary">通过翻转设备静音来电</string>
   <string name="smart_dialer_title">智能呼叫</string>
   <string name="smart_dialer_summary">当移动您的设备到耳边时自动呼叫此号码</string>
+  
+  <string name="look_up_location">查询</string>
+  <string name="phonelocation">归属地查询</string>
+  <string name="phonelocation_tip">归属地：</string>
+  <string name="phone_tip">请输入电话号码</string>
+  <string name="location_unknow">未知</string>  
+  <string name="location_service_not_available">归属地查询服务不可用!</string>
+  
 </resources>

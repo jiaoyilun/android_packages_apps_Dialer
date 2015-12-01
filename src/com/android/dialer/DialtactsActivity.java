@@ -643,6 +643,16 @@ public class DialtactsActivity extends TransactionSafeActivity implements View.O
                     toast.show();
                 }
                 break;
+            case R.id.menu_location_lookup:
+                try {
+                    startActivity(new Intent(this,LocationLookupActivity.class));
+                } catch (ActivityNotFoundException e) {
+                    Toast toast = Toast.makeText(this,
+                            R.string.location_service_not_available,
+                            Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+                break;    
             case R.id.menu_clear_frequents:
                 ClearFrequentsDialog.show(getFragmentManager());
                 return true;

@@ -133,4 +133,12 @@
     <string name="smart_dialer_title">Smart call</string>
     <string name="smart_dialer_summary">Automatically call the dialed number by moving your device to your ear</string>
 
+ <!-- Phonelocation -->  
+    <string name="look_up_location">Look up</string>
+    <string name="phonelocation">Phonelocation Look up</string>
+    <string name="phonelocation_tip">Location：</string>
+    <string name="phone_tip">Please Enter number</string>
+    <string name="location_unknow">Unknow</string>
+  <string name="location_service_not_available">Lookup Setvice is not available!</string>
+
 </resources>
