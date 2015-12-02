@@ -43,6 +43,7 @@ import android.provider.Contacts.People;
 import android.provider.Contacts.Phones;
 import android.provider.Contacts.PhonesColumns;
 import android.provider.Settings;
+import android.suda.hardware.ProximitySensorManager;
 import android.telecom.PhoneAccount;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
@@ -114,10 +115,12 @@ public class DialpadFragment extends Fragment
         AdapterView.OnItemClickListener, TextWatcher,
         PopupMenu.OnMenuItemClickListener,
         PickupGestureDetector.PickupListener,
-        DialpadKeyButton.OnPressedListener {
+        DialpadKeyButton.OnPressedListener,ProximitySensorManager.ProximitySensorListener {
     private static final String TAG = DialpadFragment.class.getSimpleName();
 
     private Context mContext;
+    
+    private ProximitySensorManager mProximitySensorManager;
 
     /**
      * LinearLayout with getter and setter methods for the translationY property using floats,
@@ -354,6 +357,9 @@ public class DialpadFragment extends Fragment
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
+        
+        mProximitySensorManager = new ProximitySensorManager(getActivity(), this);
+        
         mFirstLaunch = true;
         mCurrentCountryIso = GeoUtil.getCurrentCountryIso(getActivity());
 
@@ -677,6 +683,11 @@ public class DialpadFragment extends Fragment
 
         final ContentResolver contentResolver = activity.getContentResolver();
 
+        if (Settings.System.getInt(contentResolver, Settings.System.DIRECT_CALL_FOR_DIALER, 0) == 1
+                && !isPhoneInUse()) {
+              mProximitySensorManager.enable();
+          }
+        
         // retrieve the DTMF tone play back setting.
         mDTMFToneEnabled = Settings.System.getInt(contentResolver,
                 Settings.System.DTMF_TONE_WHEN_DIALING, 1) == 1;
@@ -725,6 +736,9 @@ public class DialpadFragment extends Fragment
     public void onPause() {
         super.onPause();
 
+        // always disable just to make sure we never keep it alive
+        mProximitySensorManager.disable();
+        
         // Make sure we don't leave this activity with a tone still playing.
         stopTone();
         mPressedDialpadKeys.clear();
@@ -758,6 +772,7 @@ public class DialpadFragment extends Fragment
     @Override
     public void onPickup() {
         if (!isDigitsEmpty()) {
+        	mProximitySensorManager.disable();
             mPickupDetector.disable();
 
             final String number = mDigits.getText().toString();

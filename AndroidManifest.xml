@@ -334,7 +334,7 @@
                   android:exported="false"
                   android:multiprocess="false" />
 
-		 <activity android:name=".LocationLookupActivity" />
+		 <activity android:name=".LocationLookupActivity"   android:label="@string/phonelocation"/>
 
     </application>
 </manifest>

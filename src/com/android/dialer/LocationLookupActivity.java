@@ -23,6 +23,7 @@ import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,6 +39,8 @@ public class LocationLookupActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.phonelocation);
+        
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);   
 
         btlookup = (Button) findViewById(R.id.lookup);
         etphone  = (EditText) findViewById( R.id.phone);
@@ -62,10 +65,4 @@ public class LocationLookupActivity extends Activity {
         });
 
     }
-
-	@Override
-	public void setTitle(int titleId) {
-		super.setTitle(R.string.phonelocation);
-	}
-
 }
